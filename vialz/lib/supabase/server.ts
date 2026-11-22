@@ -1,4 +1,3 @@
-
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
@@ -11,13 +10,11 @@ export async function createClient() {
     {
       cookies: {
         getAll: () => cookieStore.getAll(),
-        setAll(cookiesToSet: any[]) {
-          cookiesToSet: {
-            name: string;
-            value: string;
-            options: Parameters<typeof cookieStore.set>[2];
-          }[]
-        ) {
+        setAll: (cookiesToSet: {
+          name: string;
+          value: string;
+          options: Parameters<typeof cookieStore.set>[2];
+        }[]) => {
           try {
             cookiesToSet.forEach(({ name, value, options }) => {
               cookieStore.set(name, value, options);
