@@ -11,7 +11,7 @@ export async function createClient() {
     {
       cookies: {
         getAll: () => cookieStore.getAll(),
-        setAll(
+        setAll(cookiesToSet: any[]) {
           cookiesToSet: {
             name: string;
             value: string;
